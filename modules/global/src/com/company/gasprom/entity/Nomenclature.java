@@ -25,6 +25,9 @@ public class Nomenclature extends StandardEntity {
     @Column
     protected String fullName;
 
+    @Column
+    protected String unit;
+
     public String getUnit() {
         return unit;
     }
@@ -33,8 +36,6 @@ public class Nomenclature extends StandardEntity {
         this.unit = unit;
     }
 
-    @Column
-    protected String unit;
 
     public String getName() {
         return name;

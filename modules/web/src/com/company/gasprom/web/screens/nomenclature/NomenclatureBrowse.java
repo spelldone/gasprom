@@ -57,7 +57,6 @@ public class NomenclatureBrowse extends StandardLookup<Nomenclature> {
     }
 
 
-
     @Subscribe("uploadFile")
     public void onUploadFileFileUploadSucceed(FileUploadField.FileUploadSucceedEvent event) throws Exception {
 
