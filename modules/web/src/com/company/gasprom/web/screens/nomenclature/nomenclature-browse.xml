@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://nomenclatureBrowse.caption"
+        focusComponent="nomenclaturesTable"
+        messagesPack="com.company.gasprom.web.screens.nomenclature">
+    <data readOnly="true">
+        <collection id="nomenclaturesDc"
+                    class="com.company.gasprom.entity.Nomenclature">
+            <view extends="_local"/>
+            <loader id="nomenclaturesDl">
+                <query>
+                    <![CDATA[select e from gazprom_Nomenclature e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="nomenclaturesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="nomenclaturesTable"
+                dataLoader="nomenclaturesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="nomenclaturesTable"
+                    width="100%"
+                    dataContainer="nomenclaturesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="nomenclatureType"/>
+                <column id="name"/>
+                <column id="fullName"/>
+                <column id="unit"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="nomenclaturesTable.create"/>
+                <button id="editBtn" action="nomenclaturesTable.edit"/>
+                <button id="removeBtn" action="nomenclaturesTable.remove"/>
+                <upload id="uploadFile" fileStoragePutMode="MANUAL" contextHelpText="mainMsg://importExcelHelpText"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false" >
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>
